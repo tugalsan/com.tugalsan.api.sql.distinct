@@ -8,7 +8,7 @@ public class TS_SQLDistinctUtils {
 
     }
 
-    public static TS_SQLDistinct select(TS_SQLConnAnchor anchor, CharSequence tableName) {
+    public static TS_SQLDistinct distict(TS_SQLConnAnchor anchor, CharSequence tableName) {
         return new TS_SQLDistinct(anchor, tableName);
     }
 
