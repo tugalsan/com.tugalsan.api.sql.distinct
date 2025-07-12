@@ -13,6 +13,7 @@ import com.tugalsan.api.sql.conn.server.*;
 import com.tugalsan.api.sql.group.server.*;
 import com.tugalsan.api.sql.resultset.server.*;
 import com.tugalsan.api.sql.sanitize.server.*;
+import com.tugalsan.api.sql.select.server.TS_SQLSelectStmtUtils;
 import com.tugalsan.api.sql.where.server.*;
 import com.tugalsan.api.string.client.*;
 import com.tugalsan.api.thread.server.sync.TS_ThreadSyncTrigger;
@@ -56,7 +57,7 @@ public class TS_SQLDistinctExecutor {
         d.ci("toString", "order", order);
         d.ci("toString", "rowIdxOffset", rowIdxOffset);
         d.ci("toString", "rowSizeLimit", rowSizeLimit);
-        var sb = new StringBuilder(anchor.tagDistinctAndSpace()).append(lineColNames).append(" FROM ").append(tableName);
+        var sb = new StringBuilder(anchor.tagSelectAndSpace()).append("DISTINCT ").append(lineColNames).append(" FROM ").append(tableName);
         if (where != null) {
             sb.append(" ").append(where);
         }
@@ -78,7 +79,7 @@ public class TS_SQLDistinctExecutor {
     }
 
     public void walk(TGS_FuncMTU_In1<TS_SQLResultSet> onEmpty, TGS_FuncMTU_In1<TS_SQLResultSet> rs) {
-        TS_SQLDistinctStmtUtils.distinct(anchor, toString(), fillStmt -> {
+        TS_SQLSelectStmtUtils.select(anchor, toString(), fillStmt -> {
             if (where != null) {
                 where.fill(fillStmt, 0);
             }

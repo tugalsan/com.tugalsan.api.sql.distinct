@@ -15,6 +15,7 @@ module com.tugalsan.api.sql.distinct {
     requires com.tugalsan.api.sql.resultset;
     requires com.tugalsan.api.sql.sanitize;
     requires com.tugalsan.api.sql.where;
+    requires com.tugalsan.api.sql.select;
     requires com.tugalsan.api.sql.group;
     exports com.tugalsan.api.sql.distinct.server;
 }
